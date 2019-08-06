@@ -91,3 +91,6 @@ let current = words[level][pointer];
 let input = document.querySelector("input");
 let box = document.querySelector("scrollingwords");
 let quaters = document.querySelectorAll('.quaters');
+function name(params) {
+    
+}
