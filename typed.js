@@ -1,4 +1,4 @@
-var words =[
+let words =[
     [ 
         "next",
         "short",
@@ -108,14 +108,14 @@ window.onload = function() {
     for(let i = 0; i < words[level].length; i++) {
         final += "<li>" + words[level][i] + "</li>";
     }
-    document.getElementsByClassName("bouncy")[0].classList.add("bouncyIntro");
-    document.getElementById("q1").classList.add("q1c");
-    document.getElementById("q2").classList.add("q2c");
-    document.getElementById("q3").classList.add("q3c");
-    document.getElementById("q4").classList.add("q4c");
-    document.getElementsByTagName("ul")[0].innerHTML = final;
-    document.getElementById("word").innerHTML = current;
-    let currentScroll = document.getElementsByTagName("li")[pointer];
+    document.querySelectorAll(".bouncy")[0].classList.add("bouncyIntro");
+    document.querySelector("#q1").classList.add("q1c");
+    document.querySelector("#q2").classList.add("q2c");
+    document.querySelector("#q3").classList.add("q3c");
+    document.querySelector("#q4").classList.add("q4c");
+    document.querySelectorAll("ul")[0].innerHTML = final;
+    document.querySelector("#word").textContent = current;
+    let currentScroll = document.querySelectorAll("li")[pointer];
     currentScroll.style.fontSize = "19pt";
     currentScroll.style.fontWeight = "bold";
     currentScroll.style.color = "rgba(255, 255, 255, 0.7)";
@@ -134,31 +134,31 @@ function setColors() {
         red += colorAddition;
         rotationOffset += rotationAddition;
         for (let i = 1; i < 4; i++) {
-            document.getElementsByClassName('movers')[i].style.transform = "rotate(" + rotationOffset.toString() + "deg)";
+            document.querySelectorAll('.movers')[i].style.transform = "rotate(" + rotationOffset.toString() + "deg)";
         }
     }
     else if (green > 0 && red === 255 && blue === 0) {
         green -= colorAddition;
         rotationOffset += rotationAddition;
         for (let i = 2; i < 4; i++) {
-            document.getElementsByClassName('movers')[i].style.transform = "rotate(" + rotationOffset.toString() + "deg)";
+            document.querySelectorAll('.movers')[i].style.transform = "rotate(" + rotationOffset.toString() + "deg)";
         }
     }
     else if (green === 0 && red === 255 && blue < 255) {
         blue += colorAddition;
         rotationOffset += rotationAddition;
         for (let i = 3; i < 4; i++) {
-            document.getElementsByClassName('movers')[i].style.transform = "rotate(" + rotationOffset.toString() + "deg)";
+            document.querySelectorAll('.movers')[i].style.transform = "rotate(" + rotationOffset.toString() + "deg)";
         }
     }
 }
 
 function changeLevel(newLevel) {
     input.value = "";
-    document.getElementById("q1").classList.add("q1c");
-    document.getElementById("q2").classList.add("q2c");
-    document.getElementById("q3").classList.add("q3c");
-    document.getElementById("q4").classList.add("q4c");
+    document.querySelector("#q1").classList.add("q1c");
+    document.querySelector("#q2").classList.add("q2c");
+    document.querySelector("#q3").classList.add("q3c");
+    document.querySelector("#q4").classList.add("q4c");
     red = blue = 0;
     green = 255;
     rotationOffset = -90;
@@ -175,30 +175,30 @@ function changeLevel(newLevel) {
     for(let i = 0; i < words[level].length; i++) {
         final += "<li>" + words[level][i] + "</li>";
     }
-    document.getElementsByTagName("ul")[0].innerHTML = final;
-    document.getElementById("word").innerHTML = current;
+    document.querySelectorAll("ul")[0].innerHTML = final;
+    document.querySelector("#word").textContent = current;
     offset = orignamOffset;
-    let currentScroll = document.getElementsByTagName("li")[pointer];
+    let currentScroll = document.querySelectorAll("li")[pointer];
     currentScroll.style.fontSize = "19pt";
     currentScroll.style.fontWeight = "bold";
     currentScroll.style.color = "rgba(255, 255, 255, 0.7)";
     let setLevel = level===2?"Coding":level;
-    document.getElementById("message").innerHTML = "Level-" + level.toString();
+    document.querySelector("#message").textContent = "Level-" + level.toString();
     box.style.marginTop = offset.toString() + "px";
 }
 
 function setScore() {
     score += countdown;
-    document.getElementById("score").innerHTML = score.toString();
+    document.querySelector("#score").innerHTML = score.toString();
 }
 
 function setHighScore() {
     if (score > highscore) {
         highscore = score;
-        document.getElementById("highscore").innerHTML = highscore.toString();
+        document.querySelector("#highscore").innerHTML = highscore.toString();
     }
     score = 0;
-    document.getElementById("score").innerHTML = score.toString();
+    document.querySelector("#score").innerHTML = score.toString();
 }
 
 input.oninput = function() {
@@ -208,7 +208,7 @@ input.oninput = function() {
             if (countdown > 0) {
                 countdown--;
                 if (countdown === 0) {
-                    document.getElementById("message").innerHTML = "Game Over";
+                    document.querySelector("#message").textContent = "Game Over";
                     input.blur();
                     input.value = "";
                     setTimeout(() => {
@@ -216,20 +216,20 @@ input.oninput = function() {
                         changeLevel(0);
                         countdown = 4;
                         setHighScore();
-                        document.getElementById("secs").innerHTML = countdown;
+                        document.querySelector("#secs").textContent = countdown;
                     }, 1000);
                 }
             }
-            document.getElementById("secs").innerHTML = countdown;
+            document.querySelector("#secs").textContent = countdown;
         }
     }
-    document.getElementsByClassName("bouncy")[0].classList.remove("bouncyIntro");
-    document.getElementsByClassName("bouncy")[0].style.opacity = "1";
-    document.getElementById("q1").classList.remove("q1c");
-    document.getElementById("q2").classList.remove("q2c");
-    document.getElementById("q3").classList.remove("q3c");
-    document.getElementById("q4").classList.remove("q4c");
-    document.getElementsByClassName("bouncy")[0].classList.remove("bounce");
+    document.querySelectorAll(".bouncy")[0].classList.remove("bouncyIntro");
+    document.querySelectorAll(".bouncy")[0].style.opacity = "1";
+    document.querySelector("#q1").classList.remove("q1c");
+    document.querySelector("#q2").classList.remove("q2c");
+    document.querySelector("#q3").classList.remove("q3c");
+    document.querySelector("#q4").classList.remove("q4c");
+    document.querySelectorAll(".bouncy")[0].classList.remove("bounce");
     if (input.value === words[level][pointer]) {
         setColors();
         setScore();
@@ -237,7 +237,7 @@ input.oninput = function() {
             countdown = 3;
         else
             countdown = 4;
-        document.getElementById("secs").innerHTML = countdown;
+        document.querySelector("#secs").textContent = countdown;
         if (blue === 255) {
             let n = level + 1;
             changeLevel(n);
@@ -246,15 +246,15 @@ input.oninput = function() {
             pointer += 1;
             current = words[level][pointer];
             document.getElementById("word").innerHTML = current;
-            let currentScroll = document.getElementsByTagName("li")[pointer-1];
+            let currentScroll = document.querySelectorAll("li")[pointer-1];
             currentScroll.style.fontSize = "13pt";
             currentScroll.style.fontWeight = "";
             currentScroll.style.color = "rgba(255, 255, 255, 0.2)";
-            currentScroll = document.getElementsByTagName("li")[pointer];
+            currentScroll = document.querySelectorAll("li")[pointer];
             currentScroll.style.fontSize = "19pt";
             currentScroll.style.fontWeight = "bold";
             currentScroll.style.color = "rgba(255, 255, 255, 0.7)";
-            document.getElementsByClassName("bouncy")[0].classList.add("bounce");
+          
             offset = offset - nextOffset;
             quaters.forEach(quater => {
                 let c = "rgb(" + red.toString() + "," + green.toString() + "," + blue.toString() + ")";
@@ -266,4 +266,3 @@ input.oninput = function() {
         }   
     }
 }
-
