@@ -89,8 +89,8 @@ let words =[
 let pointer = 0;
 let level = 0;
 let current = words[level][pointer];
-let input = document.getElementById("input");
-let box = document.getElementById("scrollingwords");
+let input = document.querySelector("#input");
+let box = document.querySelector("#scrollingwords");
 let orignamOffset = 133;
 let offset = 133;
 let nextOffset = 31;
@@ -122,7 +122,7 @@ window.onload = function() {
 }
 
 input.onfocus = function() {
-    input.placeholder = "";
+    input.placeholder = ""; 
 }
 
 input.onblur = function() {
@@ -155,7 +155,7 @@ function setColors() {
 
 function changeLevel(newLevel) {
     input.value = "";
-    document.querySelector("#q1").classList.add("q1c");
+    document.querySelector("#q1").classList.add("q21");
     document.querySelector("#q2").classList.add("q2c");
     document.querySelector("#q3").classList.add("q3c");
     document.querySelector("#q4").classList.add("q4c");
@@ -265,4 +265,5 @@ input.oninput = function() {
             input.value = "";
         }   
     }
-}
+}   
+
