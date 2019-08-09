@@ -49,7 +49,6 @@ let words =[
         "wholesale",
         "tenuous",
         "skillful",
-        "deteriorate",
         "poised",
         "humorous",
         "scrape",
@@ -197,8 +196,9 @@ function setHighScore() {
         highscore = score;
         document.querySelector("#highscore").innerHTML = highscore.toString();
     }
-    score = 0;
     document.querySelector("#score").innerHTML = score.toString();
+    score = 0;
+
 }
 
 input.oninput = function() {
