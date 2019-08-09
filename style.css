@@ -277,13 +277,13 @@ ul{
     width: 400px;
     border-radius: 30px;
      
-    background-color: #222a38; 
+    background-color:white; 
     margin-top: 70px;
     outline: none;
     box-shadow: 2px 10px 30px rgba(0, 0, 0, 0.5);
     padding: 14px 12px;
     text-align: center;
-    color: black;
+    color: black !important;
     font-weight: bold;
     font-size: 14pt;
     transition: background-color 0.1s linear;
@@ -296,6 +296,7 @@ ul{
 
 #input:focus {
     background-color: rgba(255, 255, 255, 0.85);
+    
 }
 
 #message {
